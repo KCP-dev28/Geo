@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>สมัครสมาชิก</title>
+  <link rel="stylesheet" href="reg.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+</head>
+<body>
+  <div class="container">
+    <h1>แบบฟอร์มสมัครสมาชิก</h1>
+    <form id="memberForm">
+      <div class="form-group">
+  <label>คำนำหน้า</label>
+  <select name="คำนำหน้า" required>
+    <option value="" disabled selected>-- เลือกคำนำหน้า --</option>
+    <option value="นาย">นาย</option>
+    <option value="นาง">นาง</option>
+    <option value="นางสาว">นางสาว</option>
+    <option value="อื่นๆ">อื่นๆ</option>
+  </select>
+</div>
+      <div class="form-group">
+        <label>ชื่อ</label>
+        <input type="text" name="ชื่อ" required>
+      </div>
+      <div class="form-group">
+        <label>นามสกุล</label>
+        <input type="text" name="นามสกุล" required>
+      </div>
+      <div class="form-group">
+        <label>เบอร์โทร</label>
+        <input type="tel" name="เบอร์โทร" required>
+      </div>
+      <div class="form-group">
+        <label>LINE ID</label>
+        <input type="text" name="LINE ID">
+      </div>
+      <div class="form-group">
+        <label>บ้านเลขที่</label>
+        <input type="text" name="บ้านเลขที่" required>
+      </div>
+      <div class="form-group">
+        <label>หมู่ที่</label>
+        <input type="text" name="หมู่ที่">
+      </div>
+      <div class="form-group">
+        <label>ตำบล/แขวง</label>
+        <input type="text" name="ตำบล/แขวง" required>
+      </div>
+      <div class="form-group">
+        <label>อำเภอ/เขต</label>
+        <input type="text" name="อำเภอ/เขต" required>
+      </div>
+      <div class="form-group">
+  <label>จังหวัด</label>
+  <select name="จังหวัด" required>
+    <option value="" disabled selected>-- เลือกจังหวัด --</option>
+    <option value="กรุงเทพมหานคร">กรุงเทพมหานคร</option>
+    <option value="เชียงใหม่">เชียงใหม่</option>
+    <option value="ขอนแก่น">ขอนแก่น</option>
+    <option value="ชลบุรี">ชลบุรี</option>
+    <option value="ภูเก็ต">ภูเก็ต</option>
+    <option value="นครราชสีมา">นครราชสีมา</option>
+    <option value="สุราษฎร์ธานี">สุราษฎร์ธานี</option>
+    <!-- เพิ่มจังหวัดอื่น ๆ ได้ตามต้องการ -->
+  </select>
+</div>
+      <div class="form-group">
+        <label>รหัสผ่าน</label>
+        <input type="password" name="รหัสผ่าน" required>
+      </div>
+      <div class="form-group">
+        <label>PIN</label>
+        <input type="password" name="PIN" maxlength="6" required>
+      </div>
+      <!-- <div class="form-group">
+        <label>Google Map (URL)</label>
+        <input type="url" name="Google Map">
+      </div> -->
+
+      <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script> -->
+      <!-- ตำแหน่งจะถูกแสดงบนแผนที่ และส่งไปในช่องนี้ -->
+        <input type="hidden" name="Google Map" id="googleMapLink">
+
+        <!-- กล่องแผนที่ตรงกลาง -->
+        <!-- <div id="mapContainer">
+         <div id="map"></div>
+        </div> -->
+
+        <div id="map" style="height: 400px;"></div>
+<input type="hidden" id="googleMapLink" name="Google Map">
+
+      <button type="submit">ส่งข้อมูล</button>
+    </form>
+    <p id="responseMsg"></p>
+  </div>
+  <!-- <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzN-N6Txs1amLY3RMYi-8jeawW1j8BvgzfAzP3_79fa_TAr2BcDfTqAz7k45hRoM5ourA/exec';
+  const form = document.getElementById('memberForm');
+  const responseMsg = document.getElementById('responseMsg');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    // เพิ่มวันและเวลาปัจจุบันลงใน FormData
+    const now = new Date();
+    const formattedDate = now.toLocaleDateString('th-TH');
+    const formattedTime = now.toLocaleTimeString('th-TH');
+    formData.append('วันสมัคร', formattedDate);
+    formData.append('เวลาสมัคร', formattedTime);
+
+    fetch(scriptURL, { method: 'POST', body: formData })
+      .then(response => {
+        responseMsg.innerHTML = "ส่งข้อมูลเรียบร้อยแล้ว!";
+        form.reset();
+      })
+      .catch(error => {
+        responseMsg.innerHTML = "เกิดข้อผิดพลาด: " + error.message;
+      });
+  });
+
+
+  
+</script> -->
+    <script src="main.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+
+</body>
+</html>
